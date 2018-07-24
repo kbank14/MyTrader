@@ -8,9 +8,21 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Grid>
-        <StackPanel x:Name="customerStackPanel">
-            <ListView x:Name="customerList" />
-        </StackPanel>
-    </Grid>
+    <RelativePanel
+        Margin="0,0,0,0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+        <Grid>
+            <StackPanel x:Name="customerStackPanel">
+                <ListView
+                    x:Name="customerList"
+                    Width="696"
+                    Height="295"
+                    MinWidth="300"
+                    MinHeight="300"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center" />
+            </StackPanel>
+        </Grid>
+    </RelativePanel>
 </Page>
