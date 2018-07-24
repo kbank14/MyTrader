@@ -93,5 +93,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyAlgo\MyAlgo.csproj">
+      <Project>{e24cc5a2-8634-47b5-900f-c9029d07a1d5}</Project>
+      <Name>MyAlgo</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
