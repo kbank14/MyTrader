@@ -28,6 +28,10 @@ namespace MyTrader.UWP
         /// </summary>
         public App()
         {
+            Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
+                Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
+                Microsoft.ApplicationInsights.WindowsCollectors.Session);
+
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
@@ -39,6 +43,12 @@ namespace MyTrader.UWP
         /// <param name="e">시작 요청 및 프로세스에 대한 정보입니다.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+#if DEBUG
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                this.DebugSettings.EnableFrameRateCounter = true;
+            }
+#endif
             Frame rootFrame = Window.Current.Content as Frame;
 
             // 창에 콘텐츠가 이미 있는 경우 앱 초기화를 반복하지 말고,
