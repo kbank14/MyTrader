@@ -4,15 +4,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:MyTrader.UWP"
+    xmlns:lv="using:MyTrader.UWP.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
     <RelativePanel
         Margin="0,0,0,0"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center">
-        <Grid>
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch">
+        <Grid
+            x:Name="myList"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
             <StackPanel x:Name="customerStackPanel">
                 <ListView
                     x:Name="customerList"
@@ -23,6 +27,44 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center" />
             </StackPanel>
+        </Grid>
+
+        <Grid
+            x:Name="myExpList"
+            MinWidth="300"
+            MinHeight="300"
+            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+            RelativePanel.Below="myList">
+            <lv:ExpandableRowListViewControl
+                x:Name="control"
+                BorderBrush="Black"
+                BorderThickness="1">
+                <lv:ExpandableRowListViewControl.Items>
+                    <lv:ExpandableRowListViewControlItem x:Name="item1" RowHeader="Item1">
+                        <lv:ExpandableRowListViewControlItem.Content>
+                            <ListView>
+                                <ListView.Items>
+                                    <ListViewItem Content="1" />
+                                    <ListViewItem Content="2" />
+                                </ListView.Items>
+                            </ListView>
+                        </lv:ExpandableRowListViewControlItem.Content>
+                    </lv:ExpandableRowListViewControlItem>
+
+                    <lv:ExpandableRowListViewControlItem x:Name="item2" IsExpanded="True">
+                        <lv:ExpandableRowListViewControlItem.RowHeader>
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Margin="0,0,10,0" Symbol="Like" />
+                                <TextBlock Text="Test" />
+                            </StackPanel>
+                        </lv:ExpandableRowListViewControlItem.RowHeader>
+
+                        <lv:ExpandableRowListViewControlItem.Content>
+                            <Image Source="Assets/StoreLogo.png" Stretch="None" />
+                        </lv:ExpandableRowListViewControlItem.Content>
+                    </lv:ExpandableRowListViewControlItem>
+                </lv:ExpandableRowListViewControl.Items>
+            </lv:ExpandableRowListViewControl>
         </Grid>
     </RelativePanel>
 </Page>
